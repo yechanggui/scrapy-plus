@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+import scrapy
+from scrapy.shell import inspect_response
+from tool.lib_html import html2json4lxml
+
+
+class $classname(scrapy.Spider):
+    name = '$name'
+    allowed_domains = ['$domain']
+    djdee = '${object[v1]}'
+    meta_version = 'v1.0'
+    data_dir = './data'
+    #custom_settings = {
+        #'ITEM_PIPELINES': {
+        #    '$project_name.pipelines.${ProjectName}Pipeline': 300,
+        #    '$project_name.pipelines.${ProjectName}Pipeline': 300,
+        #},
+        #'SPIDER_MIDDLEWARES':{
+        #    '$project_name.middlewares.${ProjectName}SpiderMiddleware': 543,
+        #},
+        #'DOWNLOADER_MIDDLEWARES': {
+        #     $project_name.middlewares.${ProjectName}DownloaderMiddleware': 543,
+        # },
+        #'EXTENSIONS':{
+        #  'scrapy.extensions.corestats.CoreStats': 500,
+        #  'scrapy.extensions.telnet.TelnetConsole': 500,
+        #  'scrapy.extensions.memusage.MemoryUsage': 500,
+        #  'scrapy.extensions.memdebug.MemoryDebugger': 500,
+        #  'scrapy.extensions.closespider.CloseSpider': 500,
+        #  'scrapy.extensions.feedexport.FeedExporter': 500,
+        #  'scrapy.extensions.logstats.LogStats': 500,
+        #  'scrapy.extensions.spiderstate.SpiderState': 500,
+        #  'scrapy.extensions.throttle.AutoThrottle': 500,
+        #},
+        #'AUTOTHROTTLE_ENABLED': True
+      #}
+
+    def start_requests(self):
+        pass
+
+    def parse_index(self, response):
+        pass
+
+    def parse_info(self,response):
+        pass

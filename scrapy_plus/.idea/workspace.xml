@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ae5b3740-30eb-4723-887a-fc16c162f8d2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/spidermiddlewares/httperror.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>*paths</find>
+      <find>_genspider</find>
+      <find>template</find>
+      <find>_is_valid_name</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/commands/ruyi.py" />
+        <option value="$PROJECT_DIR$/commands/startproject-plus.py" />
+        <option value="$PROJECT_DIR$/templates/ruyi/.gitignore.tmpl" />
+        <option value="$PROJECT_DIR$/templates/project_templates/hbrain/__init__.py" />
+        <option value="$PROJECT_DIR$/templates/spiders/list.tmpl" />
+        <option value="$PROJECT_DIR$/templates/project_templates/hbrain/tool/__init__.py" />
+        <option value="$PROJECT_DIR$/commands/start-plus.py" />
+        <option value="$PROJECT_DIR$/install.py" />
+        <option value="$PROJECT_DIR$/commands/gen-plus.py" />
+        <option value="$PROJECT_DIR$/templates/spiders/ruyi.tmpl" />
+        <option value="$PROJECT_DIR$/templates/project_templates/ruyi/tool/lib_html.py" />
+        <option value="$PROJECT_DIR$/spidermiddlewares/httperror.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="scrapy-plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scrapy-plus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="scrapy-plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scrapy-plus" type="462c0819:PsiDirectoryNode" />
+              <item name="spidermiddlewares" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="scrapy-plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scrapy-plus" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/project_templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/splider" />
+      <recent name="$PROJECT_DIR$/templates/spiders" />
+      <recent name="$PROJECT_DIR$/templates/project_templates/project" />
+      <recent name="$PROJECT_DIR$/templates/project_templates" />
+      <recent name="$PROJECT_DIR$/templates/project_templates/hbrain/tool" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae5b3740-30eb-4723-887a-fc16c162f8d2" name="Default" comment="" />
+      <created>1534497937574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1534497937574</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="3" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21459228" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="SciView" order="0" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="7" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.18669528" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="right" id="SciView" order="0" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Python Console" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/hz_common_tool.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/hz_data_verification.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/hz_rand_proxy_middleware.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/hz_webdriver_middleware.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/libmsg.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/news_auto_run.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/price_auto_run.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/data.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/spider_auto_run.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/hz_common_tool.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/download.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/libmsg.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/parse.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/run_spider.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/price_auto_run.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/secret.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/news_auto_run.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/update.sh" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/upload_to_s3.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/.gitignore.tmpl" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/Makefile" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/project/tool/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/project/module/pipelines.py.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="37" column="38" lean-forward="true" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/module/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/lib_html.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/module/spiders/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/project/module/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/project/module/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/project/Makefile" />
+    <entry file="file://$USER_HOME$/virtualenvs/python_env/lib/python2.7/site-packages/scrapy/commands/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="65" column="67" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/hz_data_verification.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/hz_rand_proxy_middleware.py" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/hbrain/tool/hz_webdriver_middleware.py" />
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/module/settings.py.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1608" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/.gitignore.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/spiders/list.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/spiders/ruyi.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spidermiddlewares/httperror.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
+          <folding>
+            <element signature="e#92#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/start-plus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/module/middlewares.py.tmpl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/module/pipelines.py.tmpl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/scrapy.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/virtualenvs/python_env/lib/python2.7/site-packages/scrapy/utils/template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#51#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/project_templates/ruyi/tool/lib_html.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+          <folding>
+            <element signature="e#59#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/gen-plus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

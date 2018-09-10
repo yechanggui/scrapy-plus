@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+import os
+import codecs
+import json
+import pymongo
+import datetime
+from $project_name.items import ${ProjectName}Item
+from scrapy.pipelines.files import FilesPipeline
+from scrapy.http import Request
+
+class ${ProjectName}FilePipeline(FilesPipeline):
+    def get_media_requests(self, item, info):
+        return [Request(
+            url = x['url'],
+            meta={'file_name': str(x['name'])},
+            headers={"Referer": item.get('url', '')})
+                for x in item.get('attachment', [])]
+
+    def file_path(self, request, response=None, info=None):
+        # 文件名及路径
+        media_guid = request.meta.get('file_name')
+        media_ext = os.path.splitext(request.url)[1]
+        return '%s%s' % (media_guid, media_ext)
+
+class ${ProjectName}Pipeline(object):
+    def process_item(self, item, spider):
+        result_dir = spider.result_dir
+        for key, val in item.iteritems():
+            if isinstance(val, unicode):
+                item[key] = val.encode('utf-8')
+        result = {
+            'meta_version': spider.meta_version,
+            'meta_updated': datetime.datetime.now().isoformat()[:19],
+            'download_config': {
+                'url': item["url"],
+                'method': 'GET'
+            },
+            'download_data': {
+                'parsed_data': {},
+                'raw_data': {},
+            }
+        }
+        filename='{}.json'.format(spider.name)
+        if isinstance(item,${ProjectName}Item):
+            # result['download_data']['parsed_data']['企业名称'] = item['name']
+            pass
+
+        with codecs.open('{}/{}'.format(spider.result_dir, filename), 'a') as f:
+            line = json.dumps(result,ensure_ascii=False) + '\n'
+            f.write(line)
+        return item
+
+class MongoDBPipleline(object):
+    def __init__(self):
+        client = pymongo.MongoClient("mongodb://root:^aTFYU23Aqwe^@10.10.212.209")
+        db = client["${project_name}"]
+        self.table = db["spider_name"]
+
+    def process_item(self, item, spider):
+        result = {
+            'meta_version': spider.meta_version,
+            'meta_updated': datetime.datetime.now().isoformat()[:19],
+            'download_config': {
+                'url': item["url"],
+                'method': 'GET'
+            },
+            'download_data': {
+                'parsed_data': {},
+                'raw_data': {},
+            }
+        }
+        """ 判断item的类型，并作相应的处理，再入数据库 """
+        if isinstance(item, ${ProjectName}Item):
+            # result['download_data']['parsed_data']['企业名称'] = item['name']
+            try:
+                self.table.insert(result)
+            except Exception:
+                pass
+        else:
+            raise ValueError("MongoDBPipleline Error")
+        return item

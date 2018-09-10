@@ -1,0 +1,266 @@
+# -*- coding: utf-8 -*-
+
+import time
+import logging
+import re
+import random
+import urllib2
+import base64
+import logging
+from scrapy.downloadermiddlewares.retry import RetryMiddleware
+from scrapy.utils.response import response_status_message
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from scrapy.exceptions import IgnoreRequest
+from scrapy.http import HtmlResponse
+from pyvirtualdisplay import Display
+from user_agents import agents
+import redis
+
+logger = logging.getLogger(__name__)
+
+
+class UserAgentMiddleware(object):
+    """ 换User-Agent """
+
+    def process_request(self, request, spider):
+        agent = random.choice(agents)
+        request.headers["User-Agent"] = agent
+
+
+class AbuyunProxyMiddleware(object):
+
+    def __init__(self, settings):
+        self.logger = logging.getLogger('scrapy.proxies')
+        self.proxyServer = "http://proxy.abuyun.com:9020"
+        proxyUser = "HM397FZ8727R84TD"
+        proxyPass = "1540487730362203"
+        self.proxyAuth = "Basic " + \
+            base64.b64encode(proxyUser + ":" + proxyPass)
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings)
+
+    def process_request(self, request, spider):
+        request.meta["proxy"] = self.proxyServer
+        request.headers["Proxy-Authorization"] = self.proxyAuth
+
+    def process_exception(self, request, exception, spider):
+        if 'proxy' not in request.meta:
+            return
+        if spider.host in request.url:
+            logger.debug("Proxy exception %(request)s",
+                         {'request': request},
+                         extra={'spider': spider})
+        retryreq = request.copy()
+        retryreq.dont_filter = True
+        return retryreq
+
+
+class HZRandProxyMiddleware(object):
+
+    def __init__(self, settings):
+        self.logger = logging.getLogger('scrapy.proxies')
+        self.proxies = {}
+        self.proxy_limit = settings.get('PROXY_LIMIT')
+        self.min_proxy_num = settings.get('MIN_PROXY_NUM')
+        proxy_list = self.hz_get_proxy(self.proxy_limit)
+        if proxy_list:
+            for _ in proxy_list:
+                self.proxies[_] = ''
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings)
+
+    def process_request(self, request, spider):
+        # Don't overwrite with a random one (server-side state for IP)
+        # if 'proxy' in request.meta:
+        #     return
+        if len(self.proxies) == 0:
+            raise ValueError('All proxies are unusable, cannot proceed')
+
+        proxy_address = random.choice(list(self.proxies.keys()))
+        request.meta['proxy'] = proxy_address
+        self.logger.debug('Using proxy <%s>, %d proxies left' %
+                          (proxy_address, len(self.proxies)))
+
+        # add more proxies
+        if len(self.proxies) < self.min_proxy_num:
+            proxy_list = self.hz_get_proxy(self.proxy_limit)
+            if proxy_list:
+                for _ in proxy_list:
+                    self.proxies[_] = ''
+            self.logger.info('now have {} proxies'.format(len(self.proxies)))
+
+    def process_exception(self, request, exception, spider):
+        if 'proxy' not in request.meta:
+            return
+
+        proxy = request.meta['proxy']
+        try:
+            del self.proxies[proxy]
+        except KeyError:
+            pass
+
+        self.logger.info('Removing failed proxy {}, {} proxies left'.format(
+            proxy, len(self.proxies)))
+        # print 'put {}'.format(request.url)
+        retryreq = request.copy()
+        retryreq.dont_filter = True
+        return retryreq
+
+    # 调用快代理api获取ip地址，数量为limit；如失败返回 None
+    # 注意：实际拿到的ip数可能小于limit
+    def hz_get_proxy(self, limit=999):
+        try:
+            response = urllib2.urlopen(
+                'http://dev.kuaidaili.com/api/getproxy/?orderid=969422289345187&num={}&b_pcchrome=1&b_pcie=1&b_pcff=1&protocol=1&method=1&an_ha=1&sp1=1&sp2=1&sort=1&sep=1'.format(limit))
+            ips = response.read().split('\r\n')
+            return ['http://{}'.format(x) for x in ips]
+        except:
+            return None
+
+
+class ProxyPoolMiddleware(object):
+
+    def __init__(self, settings):
+        self.server = redis.Redis(host='127.0.0.1')
+        self.key = '{}:proxy_pool'.format(settings.get('BOT_NAME'))
+        self.logger = logging.getLogger('scrapy.proxies')
+        self.proxy_limit = settings.get('PROXY_LIMIT')
+        self.min_proxy_num = settings.get('MIN_PROXY_NUM')
+        self.max_used_num = 1000
+        self.sleep_count = 50
+        if self.len_proxy() < self.min_proxy_num:
+            self.update_proxy()
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings)
+
+    def process_request(self, request, spider):
+        # if 'proxy' in request.meta:
+        #     return
+        proxies_length = self.len_proxy()
+        if proxies_length == 0:
+            self.logger.info('All proxies are unusable, cannot proceed')
+
+        proxy_address = self.get_proxy()
+        if not proxy_address:
+            raise ValueError('Proxy is None')
+        request.meta['proxy'] = proxy_address
+        self.logger.debug('Using proxy <%s>, %d proxies left' %
+                          (proxy_address, proxies_length))
+
+        # add more proxies
+        if proxies_length < self.min_proxy_num:
+            self.update_proxy()
+            self.logger.info('now have {} proxies'.format(self.len_proxy()))
+
+    def process_exception(self, request, exception, spider):
+        if 'proxy' not in request.meta:
+            return
+
+        proxy = request.meta['proxy']
+        self.discard_proxy(proxy)
+
+        self.logger.info('Removing failed proxy {}, {} proxies left'.format(
+            proxy, self.len_proxy()))
+        # print 'put {}'.format(request.url)
+        retryreq = request.copy()
+        retryreq.dont_filter = True
+        return retryreq
+
+    def update_proxy(self):
+        try:
+            response = urllib2.urlopen(
+                'http://dev.kuaidaili.com/api/getproxy/?orderid=969422289345187&num=999&b_pcchrome=1&b_pcie=1&b_pcff=1&protocol=1&method=1&an_ha=1&sp1=1&sp2=1&sort=1&sep=1')
+            ips = ['http://{}'.format(x)
+                   for x in response.read().split('\r\n') if len(x.split('.')) == 4]
+            old = self.server.hgetall(self.key)
+            new = dict(zip(ips, [0] * len(ips)))
+            new.update(old)
+            self.server.hmset(self.key, new)
+        except Exception as e:
+            raise
+            pass
+
+    def get_proxy(self):
+        '''
+            挑一个被使用次数最少的
+        '''
+        try:
+            proxies = self.server.hgetall(self.key)
+            proxies_available = [
+                (key, int(value)) for key, value in proxies.iteritems() if int(value) >= 0]
+            index = min(range(len(proxies_available)),
+                        key=lambda index: proxies_available[index][1])
+            proxy = proxies_available[index][0]
+            count = proxies_available[index][1]
+            self.server.hset(self.key, proxy, count + 1)
+            return proxy
+        except:
+            return None
+
+    def del_proxy(self, proxy):
+        try:
+            return not self.server.hset(self.key, proxy, -1)
+        except:
+            return False
+
+    def discard_proxy(self, proxy):
+        '''
+            增加proxy的使用次数，降低再次被使用的可能性
+        '''
+        try:
+            return self.server.hincrby(self.key, proxy, self.sleep_count)
+        except:
+            return False
+
+    def len_proxy(self):
+        try:
+            proxies = self.server.hvals(self.key)
+            return len([value for value in proxies
+                if int(value) >= 0 and int(value) < self.max_used_num])
+        except:
+            return 0
+
+class TycListMiddleware(object):
+    def __init__(self, settings):
+        # self.chrome_driver_path = settings.get('CHROME_DRIVER_PATH')
+        # self.cloud_mode = settings.get('CLOUD_MODE')
+        pass
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings)
+
+    def process_request(self, request, spider):
+        # 线上需要 display， 本地调试可以注释掉
+        # if self.cloud_mode:
+        #     display = Display(visible=0, size=(800, 600))
+        #     display.start()
+        dcap = dict(DesiredCapabilities.PHANTOMJS)
+        dcap["phantomjs.page.settings.userAgent"] = (request.headers["User-Agent"])
+        driver = webdriver.PhantomJS(desired_capabilities=dcap)
+        # chrome_options = webdriver.ChromeOptions()
+        # prefs = {"profile.managed_default_content_settings.images": 2}
+        # chrome_options.add_experimental_option("prefs", prefs)
+        # driver = webdriver.Chrome(self.chrome_driver_path, chrome_options=chrome_options)
+        driver.get(request.url)
+        try:
+            element = WebDriverWait(driver, 15).until(
+                ec.presence_of_element_located((By.XPATH, '//div[@class="b-c-white search_result_container"] | //img[@alt="无结果"]'))
+            )
+            body = driver.page_source
+            driver.quit()
+            return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
+        except:
+            driver.quit()
+            spider.logger.error('Ignore request, url: {}'.format(request.url))
+            raise IgnoreRequest()
